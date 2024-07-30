@@ -1,38 +1,182 @@
-.App {
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #001b2e;
+}
+
+.app-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #9CDBA6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 40px;
+}
+
+.app-title {
+  font-size: 36px;
+  color: #131842;
+  font-weight: bold;
+  padding-left: 30px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-description {
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #131842;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.input{
+  width: -webkit-fill-available;
+  padding: 10px;
+  font-size: 16px;
+  background-color: whitesmoke;
+  border: 2px solid #468585;
+  border-radius: 15px;
+  margin-bottom: 10px;
+
+}
+.searchBox{
+  width: -webkit-fill-available;
+  padding: 12px 40px;
+  font-size: 14px;
+  background-color: rgb(191, 243, 248);
+  border: 2px solid #468585;
+  border-radius: 50px;
+  margin-bottom: 10px;
+}
+.search-bar {
+  margin-bottom: 20px;
+}
+.search-icn{
+  color:#001b2e;
+  padding: 14px;
+  height: 15px;
+  position: absolute;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.textarea {
+  width: -webkit-fill-available;
+  padding: 10px;
+  font-size: 16px;
+  background-color: whitesmoke;
+  border: 2px solid #468585;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  resize: none;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #1e00ff;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.task-editor {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color:#f7f3ec;
+  border: 2px solid #f7f3ec;
+  border-radius: 20px;
+}
+
+.task-list {
+  background-color: #f7f3ec;
+  border: 1px solid #9CDBA6;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.task-item {
+  padding: 10px;
+  border-bottom: 1px solid #070707;
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.task-item-header {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.task-title {
+  flex: 1;
+  margin-left: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.task-title.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+.task-details {
+  color: #1A3636;
+  margin-top: 10px;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #17153B;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+.expand-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+}
+.edit-button{
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.edit-button:hover{
+  color:#1e00ff;
+}
+.edit-icon{
+  width: 20px;
+  height: 20px;
+}
+.up-arrow {
+  width: 15px;
+  height: 15px;
+}
+.down-arrow {
+  width: 15px;
+  height: 15px;
+}
+
+.expand-button:hover, .edit-button:hover {
+  text-decoration: underline;
+}
+.imgContainer{
+  text-align: center;
+  margin: auto;
+  padding: 3px;
+}
+.todoImg{
+  height: 100px;
+  padding:5px;
 }
