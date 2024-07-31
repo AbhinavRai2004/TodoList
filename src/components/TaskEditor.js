@@ -1,3 +1,4 @@
+// TaskEditor.js
 import React, { useState, useEffect } from 'react';
 import '../App.css';  
 
@@ -14,7 +15,8 @@ const TaskEditor = ({ onSave, existingTask }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave({ title, description });
+    const task = { id: existingTask ? existingTask.id : Date.now(), title, description };
+    onSave(task);
     setTitle('');
     setDescription('');
   };
@@ -36,7 +38,9 @@ const TaskEditor = ({ onSave, existingTask }) => {
         required 
         className="textarea"
       />
-      <button type="submit" className="button">Save Task</button>
+      <button type="submit" className="button">
+        {existingTask ? 'Update' : 'Add'}
+      </button>
     </form>
   );
 };

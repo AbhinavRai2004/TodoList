@@ -1,6 +1,7 @@
+// TaskList.js
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare,faAngleUp,faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare, faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import '../App.css'; 
 
 const TaskList = ({ tasks, onUpdate, onToggle }) => {
