@@ -30,7 +30,7 @@ The application follows a modular and component-based architecture. The main com
 
 2. Navigate to the project directory:
    ```sh
-   cd TodoList-app
+   cd TodoList
    ```
 
 3. Install dependencies:
