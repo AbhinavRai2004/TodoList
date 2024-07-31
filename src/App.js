@@ -1,37 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import todoImg from './images/todo.png';
 import TaskEditor from './components/TaskEditor';
 import TaskList from './components/TaskList';
 import './App.css';
-
+import initialTasks from './utils/tasks'; // Import initial tasks
 
 const App = () => {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(initialTasks);
   const [searchTerm, setSearchTerm] = useState('');
   const [taskToEdit, setTaskToEdit] = useState(null);
 
-  useEffect(() => {
-    fetch('/tasks.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log('Fetched tasks:', data);
-        setTasks(data);
-      })
-      .catch(error => console.error('Error fetching tasks:', error));
-  }, []);
-
   const addTask = (task) => {
-    const newTask = { 
-      ...task, 
-      id: tasks.length + 1, 
-      completed: false, 
-      timestamp: new Date().toISOString() 
+    const newTask = {
+      ...task,
+      id: tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1, // Generate new ID
+      completed: false,
+      timestamp: new Date().toISOString()
     };
     setTasks([...tasks, newTask]);
   };
@@ -49,14 +35,17 @@ const App = () => {
     setSearchTerm(e.target.value);
   };
 
-  const filteredTasks = tasks.filter(task => 
+  const filteredTasks = tasks.filter(task =>
     task.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div className="app-container">
-      <h1 className="app-title">Todo List</h1>
-      <p className="app-description">Add any to-do's that are on your list. Some examples are below.</p>
+      <h1 className="app-title">Task Manager</h1>
+      <div className='imgContainer'>
+        <img className="todoImg" src={todoImg} alt="todoImg"/>
+        <figcaption className="app-description">Add any to-do's that are on your list</figcaption>
+      </div>
       <div className="search-bar">
         <FontAwesomeIcon className="search-icn" icon={faMagnifyingGlass} />
         <input 
@@ -66,7 +55,6 @@ const App = () => {
           onChange={handleSearchChange} 
           className="searchBox"
         />
-        
       </div>
       <TaskEditor onSave={taskToEdit ? updateTask : addTask} existingTask={taskToEdit} />
       <TaskList tasks={filteredTasks} onUpdate={setTaskToEdit} onToggle={toggleTaskCompletion} />
